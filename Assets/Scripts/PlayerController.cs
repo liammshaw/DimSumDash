@@ -6,7 +6,7 @@ using UnityEngine;
 // https://www.youtube.com/watch?v=c9kxUvCKhwQ&ab_channel=GameDevBeginner
 // https://www.youtube.com/watch?v=K1xZ-rycYY8&ab_channel=bendux
 
-public class person : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] float jumpForce = 10;
     public float horizontal;
@@ -14,6 +14,9 @@ public class person : MonoBehaviour
     private Rigidbody2D rb;
     bool onGround = false;
     public AudioSource a;
+    public AudioSource coinAudio;
+    public CoinManager cm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,5 +42,13 @@ public class person : MonoBehaviour
             onGround = true;
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Coin") {
+            Destroy(collision.gameObject);
+            cm.coinCount++;
+            coinAudio.Play(0);
+        }
     }
 }
