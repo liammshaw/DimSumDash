@@ -50,6 +50,12 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Steam"){
+            Debug.Log("interacted with steam");
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            onGround = false;
+            animator.SetBool("onGround", onGround);
+        }
         if (collision.gameObject.tag == "Coin") {
             Destroy(collision.gameObject);
             cm.coinCount++;
