@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 459dd1a468df4e94f8646763551f2560
+  - enabled: 1
+    path: Assets/Scenes/Dim Sum Dash.unity
+    guid: 0c35f0a528337d14a9f2e941128d7cf4
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: de34ef7eb551a4f39a65439414f80ff3
   m_configObjects: {}

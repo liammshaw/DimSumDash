@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="align-items: center; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Images/dimsum-food-on-the-table.png?fileID=2800000&amp;guid=d291653af44891044afa47520481957d&amp;type=3#dimsum-food-on-the-table&apos;); justify-content: center; background-color: rgb(188, 0, 0);">
+        <ui:Label text="Thank You for Playing Dim Sum Dash " display-tooltip-when-elided="true" style="background-color: rgb(188, 0, 0);" />
+        <ui:Label text="Created By Liam Shaw and Briana Kuo" display-tooltip-when-elided="true" style="background-color: rgb(188, 0, 0);" />
+        <ui:Button text="Main Menu " display-tooltip-when-elided="true" name="MainMenu" style="background-color: rgb(185, 174, 172); width: 100px; height: 50px;" />
+    </ui:VisualElement>
+</ui:UXML>

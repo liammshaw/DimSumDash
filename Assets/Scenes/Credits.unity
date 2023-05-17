@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 23ffe58ff4ef28f4a81eea98333f958a, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 6772eec715b5cfe44bc9da79d77e5ec0, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: cc56239fd8ffa4b869045cc82587b89a, type: 3}
   m_SortingOrder: 0
 --- !u!4 &1614451914
 Transform:
@@ -265,8 +265,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1614451912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279796b5b4ccf8846971b5dbff109f63, type: 3}
+  m_Script: {fileID: 11500000, guid: c2822b699494944329421796341d0e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStartScene: Dim Sum Dash
-  credits: Credits
+  MainMenu: MainMenu

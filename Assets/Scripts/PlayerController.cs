@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 // https://www.youtube.com/watch?v=R5yoBsZhdhA&ab_channel=xxRafaelProductions-RafaelVicuna
 // https://www.youtube.com/watch?v=c9kxUvCKhwQ&ab_channel=GameDevBeginner
@@ -19,6 +21,15 @@ public class PlayerController : MonoBehaviour
     public GameObject spawnpoint;
     public Animator animator;
 
+    public float SteamForce;
+
+    [SerializeField] Sprite OnLantern;
+
+    public Text coinText;
+
+    [HideInInspector] public PlayerController Instance;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +37,24 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         //a = GetComponent<AudioSource>();
         horizontal = 0;
+        Instance = this;
+        cm.coinText = coinText;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(horizontal * moveSpeed * Time.deltaTime, rb.velocity.y);
+        // rb.velocity = new Vector2(horizontal * moveSpeed * Time.deltaTime, rb.velocity.y);
         if (Input.GetKeyDown(KeyCode.Space) && (onGround == true)) {
             rb.AddForce(Vector2.up*jumpForce, ForceMode2D.Impulse);
             onGround = false;
             animator.SetBool("onGround", onGround);
         }
+        // horizontal = Input.GetAxisRaw("Horizontal");
+    }
+
+    void FixedUpdate(){
+        rb.velocity = new Vector2(horizontal * moveSpeed * Time.deltaTime, rb.velocity.y);
         horizontal = Input.GetAxisRaw("Horizontal");
     }
 
@@ -52,7 +70,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "Steam"){
             Debug.Log("interacted with steam");
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * SteamForce, ForceMode2D.Impulse);
             onGround = false;
             animator.SetBool("onGround", onGround);
         }
@@ -65,5 +83,17 @@ public class PlayerController : MonoBehaviour
             Debug.Log("interacted with death point");
             transform.position = spawnpoint.transform.position;
         }
+        if (collision.gameObject.tag == "Lantern" && cm.coinCount == 20){
+            GameObject lantern = GameObject.FindGameObjectWithTag("Lantern");
+            SpriteRenderer sr = lantern.GetComponent<SpriteRenderer>();
+            sr.sprite = OnLantern;
+            StartCoroutine(EndLevel());
+        }
+    }
+
+    IEnumerator EndLevel(){
+        yield return new WaitForSeconds(2);
+
+        SceneManager.LoadScene("Credits");
     }
 }
